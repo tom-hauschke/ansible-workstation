@@ -25,7 +25,7 @@
     mode: "0755"
 
 - name: clone vim plugins
-  git:
+  ansible.builtin.git:
     repo: "{{ item }}"
     dest: "{{ vim_plugin_dir }}"
   with_items: "{{ vim_plugins }}"

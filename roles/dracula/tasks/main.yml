@@ -8,11 +8,11 @@
     mode: "0755"
 
 - name: clone dracula xresources
-  git:
+  ansible.builtin.git:
     repo: "{{ dracula_xresources_url }}"
     dest: "{{ dracula_xresources_path }}"
 
 - name: clone dracula vim
-  git:
+  ansible.builtin.git:
     repo: "{{ dracula_vim_url }}"
     dest: "{{ dracula_vim_path }}"

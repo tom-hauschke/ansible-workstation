@@ -96,7 +96,7 @@ herbstluftwm_dir: "{{ conf_dir }}/herbstluftwm"
 herbstluftwm_conf_url: "{{ dotfiles_raw_url }}/herbstluftwm/autostart"
 herbstluftwm_conf_path: "{{ herbstluftwm_dir }}/autostart"
 
-dracula_dir: "{{ data_dir }}/dracula"
+dracula_dir: "{{ data_dir }}/dracula-theme"
 dracula_xresources_url: "https://github.com/dracula/xresources.git"
 dracula_xresources_path: "{{ dracula_dir }}/xresources"
 dracula_vim_url: "https://github.com/dracula/vim.git"

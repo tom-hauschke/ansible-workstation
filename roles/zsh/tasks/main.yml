@@ -22,7 +22,7 @@
     mode: "0755"
 
 - name: clone zsh plugins
-  git:
+  ansible.builtin.git:
     repo: "{{ zsh_plugins }}"
     dest: "{{ zsh_plugin_dir }}"
 
