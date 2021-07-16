@@ -98,7 +98,9 @@ herbstluftwm_conf_path: "{{ herbstluftwm_dir }}/autostart"
 
 dracula_dir: "{{ data_dir }}/dracula"
 dracula_xresources_url: "https://github.com/dracula/xresources.git"
+dracula_xresources_path: "{{ dracula_dir }}/xresources"
 dracula_vim_url: "https://github.com/dracula/vim.git"
+dracula_vim_path: "{{ dracula_dir }}/vim"
 
 default_shell: "/usr/bin/zsh"
 

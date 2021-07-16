@@ -10,9 +10,9 @@
 - name: clone dracula xresources
   git:
     repo: "{{ dracula_xresources_url }}"
-    dest: "{{ dracula_dir }}"
+    dest: "{{ dracula_xresources_path }}"
 
 - name: clone dracula vim
   git:
     repo: "{{ dracula_vim_url }}"
-    dest: "{{ dracula_dir }}"
+    dest: "{{ dracula_vim_path }}"
