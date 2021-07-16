@@ -32,11 +32,11 @@
 
 - name: symlink dracula theme
   ansible.builtin.file:
-    src: "{{ data_dir }}/dracula-theme/vim"
-    dest: "{{ vim_plugin_dir }}"
+    src: "{{ dracula_vim_path }}"
+    dest: "{{ vim_dracula_dir }}"
+    state: link
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
-    state: "link"
 
 - name: download vim config file
   get_url:
