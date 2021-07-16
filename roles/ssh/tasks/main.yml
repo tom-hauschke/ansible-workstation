@@ -1,0 +1,32 @@
+---
+- name: install openssh
+  pacman:
+    update_cache: true
+    name: openssh
+    state: latest
+
+- name: create ssh dir
+  ansible.builtin.file:
+    path: "{{ ssh_dir }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0755"
+
+- name: download ssh config
+  get_url:
+    url: "{{ ssh_conf_url }}"
+    dest: "{{ ssh_conf_path }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0644"
+
+- name: Touch local ssh config file
+  ansible.builtin.file:
+    path: "{{ ssh_conf_path }}.local"
+    state: touch
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0600"
+    modification_time: preserve
+    access_time: preserve

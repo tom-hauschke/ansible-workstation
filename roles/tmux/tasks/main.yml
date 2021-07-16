@@ -1,0 +1,35 @@
+---
+- name: install tmux
+  pacman:
+    update_cache: true
+    name: tmux
+    state: latest
+
+- name: create tmux dir
+  ansible.builtin.file:
+    path: "{{ tmux_dir }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0755"
+
+- name: download tmux config file
+  get_url:
+    url: "{{ tmux_conf_url }}"
+    dest: "{{ tmux_conf_path }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0644"
+
+- name: create tmux plugin dir
+  ansible.builtin.file:
+    path: "{{ tmux_plugin_dir }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0755"
+
+- name: clone TPM
+  ansible.builtin.git:
+    repo: "{{ tmux_tpm_url }}"
+    dest: "{{ tmux_plugin_dir }}"

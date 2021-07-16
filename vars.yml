@@ -1,0 +1,105 @@
+---
+noconfig_packages:
+  - ansible
+  - ansible-lint
+  - bat
+  - calc
+  - curl
+  - dmenu
+  - docker
+  - exa
+  - fd
+  - feh
+  - firefox
+  - fzf
+  # - git
+  - gradle
+  - grub
+  # - herbstluftwm
+  - htop
+  - intellij-idea-community-edition
+  - iproute2
+  - jdk-openjdk
+  - jre-openjdk
+  - keepassxc
+  - kotlin
+  - make
+  - man-db
+  - man-pages
+  - openjdk-doc
+  - openjdk-src
+  # - openssh
+  - ripgrep
+  - rxvt-unicode
+  - rxvt-unicode-terminfo
+  - tar
+  - terminus-font
+  # - tmux
+  - tldr
+  - traceroute
+  - tree
+  - unzip
+  # - vim
+  - wget
+  - which
+  - yamllint
+  - zathura
+  - zip
+  # - zsh
+
+default_dirs:
+  - ansible
+  - dev
+  - docs
+  - dotfiles
+  - keepass
+  - scripts
+  - tmp
+  - usb
+
+home_dir: "{{ lookup('env','HOME') }}"
+conf_dir: "{{ home_dir }}/.config"
+data_dir: "{{ home_dir }}/data"
+
+dotfiles_raw_url: "https://raw.githubusercontent.com/H3xaT0m/dotfiles/master/"
+
+vim_dir: "{{ conf_dir }}/vim"
+vim_vimrc_path: "{{ dotfiles_raw_url }}/vim/vimrc"
+vim_plugin_dir: "{{ vim_dir }}/pack/plugins/start"
+vim_plugins:
+  - "https://github.com/pearofducks/ansible-vim.git"
+  - "https://github.com/rbong/vim-crystalline.git"
+  - "https://github.com/airblade/vim-gitgutter.git"
+
+zsh_dir: "{{ conf_dir }}/zsh"
+zsh_file_url: "{{ dotfiles_raw_url }}/zsh"
+zsh_plugin_dir: "{{ zsh_dir }}/plugins"
+zsh_plugins:
+  - "https://github.com/zsh-users/zsh-autosuggestions.git"
+  - "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+
+tmux_dir: "{{ conf_dir }}/tmux"
+tmux_plugin_dir: "{{ tmux_dir }}/plugins"
+tmux_conf_url: "{{ dotfiles_raw_url }}/tmux/tmux.conf"
+tmux_conf_path: "{{ tmux_dir }}/tmux.conf"
+tmux_tpm_url: "https://github.com/tmux-plugins/tpm"
+
+ssh_dir: "{{ home_dir }}/.ssh"
+ssh_conf_url: "{{ dotfiles_raw_url }}/ssh/conf"
+ssh_conf_path: "{{ ssh_dir }}/config"
+
+git_dir: "{{ conf_dir }}/git"
+git_conf_url: "{{ dotfiles_raw_url }}/git/config"
+git_conf_path: "{{ git_dir }}/config"
+
+herbstluftwm_dir: "{{ conf_dir }}/herbstluftwm"
+herbstluftwm_conf_url: "{{ dotfiles_raw_url }}/herbstluftwm/autostart"
+herbstluftwm_conf_path: "{{ herbstluftwm_dir }}/autostart"
+
+dracula_dir: "{{ data_dir }}/dracula"
+dracula_xresources_url: "https://github.com/dracula/xresources.git"
+dracula_vim_url: "https://github.com/dracula/vim.git"
+
+default_shell: "/usr/bin/zsh"
+
+hidpi: false

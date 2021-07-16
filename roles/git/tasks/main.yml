@@ -1,0 +1,32 @@
+---
+- name: install git
+  pacman:
+    update_cache: true
+    name: git
+    state: latest
+
+- name: create git dir
+  ansible.builtin.file:
+    path: "{{ git_dir }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0755"
+
+- name: download git config file
+  get_url:
+    url: "{{ git_conf_url }}"
+    dest: "{{ git_conf_path }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0644"
+
+- name: touch local git config file
+  ansible.builtin.file:
+    path: "{{ git_conf_path }}.local"
+    state: touch
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0600"
+    modification_time: preserve
+    access_time: preserve

@@ -1,0 +1,51 @@
+---
+- name: install zsh
+  pacman:
+    update_cache: true
+    name: zsh
+    state: latest
+
+- name: create zsh dir
+  file:
+    path: "{{ zsh_dir }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0755"
+
+- name: create zsh plugin dir
+  file:
+    path: "{{ zsh_plugin_dir }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0755"
+
+- name: clone zsh plugins
+  git:
+    repo: "{{ zsh_plugins }}"
+    dest: "{{ zsh_plugin_dir }}"
+
+- name: download zshenv
+  get_url:
+    url: "{{ zsh_file_url }}/zshenv"
+    dest: "{{ home_dir }}/.zshenv"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0644"
+
+- name: download zsh files
+  get_url:
+    url: "{{ zsh_file_url }}/{{ item }}"
+    dest: "{{ zsh_dir }}/{{ item }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0644"
+  with_items:
+    - zshrc
+    - zprofile
+
+- name: set default shell
+  user:
+    name: "{{ ansible_user }}"
+    shell: "{{ default_shell }}"

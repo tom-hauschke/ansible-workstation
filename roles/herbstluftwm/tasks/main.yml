@@ -1,0 +1,21 @@
+---
+- name: install HerbstluftWM
+  pacman:
+    update_cache: true
+    name: herbstluftwm
+
+- name: create HerbstluftWM dir
+  file:
+    path: "{{ herbstluftwm_dir }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0755"
+
+- name: download HerbstluftWM autostart script
+  get_url:
+    url: "{{ herbstluftwm_conf_url }}"
+    dest: "{{ herbstluftwm_conf_path }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0644"

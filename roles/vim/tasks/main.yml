@@ -1,0 +1,55 @@
+---
+- name: install vim
+  pacman:
+    update_cache: true
+    name: vim
+    state: latest
+
+- name: create vim dirs
+  file:
+    path: "{{ vim_dir }}/{{ item }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0755"
+  with_items:
+    - backup
+    - swap
+
+- name: create vim plugin dir
+  file:
+    path: "{{ vim_plugin_dir }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0755"
+
+- name: clone vim plugins
+  git:
+    repo: "{{ item }}"
+    dest: "{{ vim_plugin_dir }}"
+  with_items: "{{ vim_plugins }}"
+
+- name: symlink dracula theme
+  ansible.builtin.file:
+    src: "{{ data_dir }}/dracula-theme/vim"
+    dest: "{{ vim_plugin_dir }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    state: "link"
+
+- name: download vim config file
+  get_url:
+    url: "{{ vim_vimrc_path }}"
+    dest: "{{ vim_dir }}/vimrc"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0644"
+
+- name: symlink vimrc to home
+  ansible.builtin.file:
+    src: "{{ vim_dir }}/vimrc"
+    dest: "{{ home_dir }}/.vimrc"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    state: "link"

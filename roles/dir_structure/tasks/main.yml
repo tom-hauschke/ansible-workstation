@@ -1,0 +1,16 @@
+---
+- name: create data dir
+  file:
+    path: "{{ data_dir }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0755"
+
+- name: create default dirs
+  file:
+    path: "{{ data_dir }}/{{ default_dirs }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0755"

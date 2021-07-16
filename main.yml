@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  become: true
+  vars_files:
+    - vars.yml
+  roles:
+    - update_system
+    - dir_structure
+    - git
+    - herbstluftwm
+    - role: hidpi
+      when: hidpi|bool
+    - noconfig_packages
+    - dracula
+    - ssh
+    - tmux
+    - vim
+    - zsh

@@ -1,0 +1,6 @@
+---
+- name: install noconfig packages
+  pacman:
+    update_cache: true
+    name: "{{ noconfig_packages }}"
+    state: latest
