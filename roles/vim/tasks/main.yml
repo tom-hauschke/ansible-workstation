@@ -26,7 +26,7 @@
 
 - name: clone vim plugins
   ansible.builtin.git:
-    repo: "{{ item.value.url }}"
+    repo: "{{ item.url }}"
     dest: "{{ vim_plugin_dir }}/{{ item.key }}"
   with_items: "{{ vim_plugins }}"
 

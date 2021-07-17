@@ -23,7 +23,7 @@
 
 - name: clone zsh plugins
   ansible.builtin.git:
-    repo: "{{ item.value.url }}"
+    repo: "{{ item.url }}"
     dest: "{{ zsh_plugin_dir }}/{{ item.key }}"
   with_items: "{{ zsh_plugins }}"
 
