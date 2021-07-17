@@ -9,8 +9,9 @@
 
 - name: create default dirs
   file:
-    path: "{{ data_dir }}/{{ default_dirs }}"
+    path: "{{ data_dir }}/{{ item }}"
     state: directory
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     mode: "0755"
+  with_items: "{{ default_dirs }}"
