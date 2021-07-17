@@ -67,22 +67,22 @@ vim_dir: "{{ conf_dir }}/vim"
 vim_vimrc_path: "{{ dotfiles_raw_url }}/vim/vimrc"
 vim_plugin_dir: "{{ vim_dir }}/pack/plugins/start"
 vim_plugins:
-  - ansible-vim:
-      url: "https://github.com/pearofducks/ansible-vim.git"
-  - vim-crystalline:
-      url: "https://github.com/rbong/vim-crystalline.git"
-  - vim-gitgutter:
-      url: "https://github.com/airblade/vim-gitgutter.git"
+  ansible-vim:
+    url: "https://github.com/pearofducks/ansible-vim.git"
+  vim-crystalline:
+    url: "https://github.com/rbong/vim-crystalline.git"
+  vim-gitgutter:
+    url: "https://github.com/airblade/vim-gitgutter.git"
 vim_dracula_dir: "{{ vim_plugin_dir }}/dracula-theme"
 
 zsh_dir: "{{ conf_dir }}/zsh"
 zsh_file_url: "{{ dotfiles_raw_url }}/zsh"
 zsh_plugin_dir: "{{ zsh_dir }}/plugins"
 zsh_plugins:
-  - zsh-autosuggestions:
-      url: "https://github.com/zsh-users/zsh-autosuggestions.git"
-  - zsh-syntax-highlighting:
-      url: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+  zsh-autosuggestions:
+    url: "https://github.com/zsh-users/zsh-autosuggestions.git"
+  zsh-syntax-highlighting:
+    url: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
 
 tmux_dir: "{{ conf_dir }}/tmux"
 tmux_plugin_dir: "{{ tmux_dir }}/plugins"

@@ -23,9 +23,9 @@
 
 - name: clone zsh plugins
   ansible.builtin.git:
-    repo: "{{ item.url }}"
+    repo: "{{ item.value.url }}"
     dest: "{{ zsh_plugin_dir }}/{{ item.key }}"
-  with_items: "{{ zsh_plugins }}"
+  loop: "{{ lookup('dict', zsh_plugins) }}"
 
 - name: download zshenv
   get_url:
