@@ -26,8 +26,8 @@
 
 - name: clone vim plugins
   ansible.builtin.git:
-    repo: "{{ item }}"
-    dest: "{{ vim_plugin_dir }}"
+    repo: "{{ item.value.url }}"
+    dest: "{{ vim_plugin_dir }}/{{ item.key }}"
   with_items: "{{ vim_plugins }}"
 
 - name: symlink dracula theme
